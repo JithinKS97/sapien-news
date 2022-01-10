@@ -6,6 +6,8 @@ import Masonry from "react-masonry-css";
 import Link from "next/link";
 import { Center, VStack } from "@chakra-ui/react";
 import { newsFeedArray } from "./newsFeed";
+import { AppContext } from "../../context/app";
+import { useContext } from "react";
 
 const breakpointColumnsObj = {
   default: 4,
@@ -14,7 +16,11 @@ const breakpointColumnsObj = {
   500: 1,
 };
 
-export default function NewsFeed({ setSelectedNews }: any) {
+export default function NewsFeed() {
+  const context = useContext(AppContext);
+
+  const { setSelectedNews } = context as any;
+
   const handleClick = (news: any) => () => {
     setSelectedNews(news);
   };
